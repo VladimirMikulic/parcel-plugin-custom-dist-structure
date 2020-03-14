@@ -1,0 +1,1 @@
+import '../img/earth.svg';
