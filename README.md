@@ -59,7 +59,7 @@ npm test
 **Vladimir Mikulic**
 
 - Twitter: [@VladoDev](https://twitter.com/VladoDev)
-- Github: [@Vladimir Mikulic](https://github.com/VladimirMikulic)
+- Github: [@VladimirMikulic](https://github.com/VladimirMikulic)
 - LinkedIn: [@vladimirmikulic](https://www.linkedin.com/in/vladimir-mikulic/)
 
 ## :handshake: Contributing
