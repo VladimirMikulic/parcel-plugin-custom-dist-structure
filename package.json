@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-custom-dist-structure",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Parcel plugin that allows you to specify a custom dist structure.",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,9 @@
   "keywords": [
     "parcel",
     "plugin",
-    "assets"
+    "assets",
+    "structure",
+    "dist"
   ],
   "author": "Vladimir Mikulic",
   "homepage": "https://github.com/VladimirMikulic/parcel-plugin-custom-dist-structure#readme",

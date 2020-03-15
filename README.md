@@ -1,6 +1,6 @@
 # parcel-plugin-custom-dist-structure
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/dynamic/json?color=blue&label=version&query=version&url=https%3A%2F%2Fraw.githubusercontent.com%2FVladimirMikulic%2Fparcel-plugin-custom-dist-structure%2Fmaster%2Fpackage.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: VladoDev](https://img.shields.io/twitter/follow/VladoDev.svg?style=social)](https://twitter.com/VladoDev)
 
@@ -19,7 +19,7 @@ After you've installed the plugin, you'll need to specify configuration for it i
 
 The plugin configuration is very simple, but also very flexible.
 
-It will generate the structure you specify in the configuration object while also handling all your imports (css, images, js...) which makes it suitable for all use cases, from simple websites all the way to complex React/Angular/Vue projects.
+It will generate the structure you specify in the configuration object while also handle all your imports (css, images, js...) which makes it suitable for all use cases, from simple websites all the way to complex React/Angular/Vue projects.
 
 Example configuration object in `package.json`:
 
@@ -41,7 +41,7 @@ Example configuration object in `package.json`:
     // Enable plugin in development mode (default: false)
     "development": true
   }
-},
+}
 ```
 
 ## :sparkles: Run tests
