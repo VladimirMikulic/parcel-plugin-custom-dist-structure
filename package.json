@@ -4,7 +4,13 @@
   "description": "Parcel plugin that allows you to specify a custom dist structure.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./lib/**/*.js"
+    ]
   },
   "customDistStructure": {
     "config": {
@@ -35,6 +41,7 @@
   "license": "MIT",
   "dependencies": {
     "dependency-graph": "^0.9.0",
+    "glob": "^7.1.6",
     "move-file": "^1.2.0",
     "regex-escape": "^3.4.9",
     "replace-in-file": "^5.0.2"
