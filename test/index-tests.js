@@ -60,6 +60,7 @@ function getFileLinks(distFolder, publicURL) {
   return fileLinks;
 }
 
+// TODO -> make multiple different instances of these to test different project configs
 let relativeFileLinks = files => {
   const { jsFile, cssFile, jsMapFile, cssMapFile, jpgFile, svgFile } = files;
 
