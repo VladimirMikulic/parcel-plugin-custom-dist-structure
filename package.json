@@ -16,6 +16,7 @@
     "config": {
       ".js": "js",
       ".css": "css",
+      ".map": "maps",
       "images": [
         ".jpg",
         ".svg"

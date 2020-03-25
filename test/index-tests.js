@@ -34,14 +34,14 @@ module.exports = ({ outDir, publicURL }) => () => {
   });
 
   it('tests that the sourceRoot property has a correct path to the source directory as a value', () => {
-    const jsMapFilePath = path.join(distFolder, jsMapFile);
+    const jsMapFilePath = path.join(distFolder, 'maps', jsMapFile);
     const jsMapFileContent = JSON.parse(readFileSync(jsMapFilePath));
 
-    const cssMapFilePath = path.join(distFolder, cssMapFile);
+    const cssMapFilePath = path.join(distFolder, 'maps', cssMapFile);
     const cssMapFileContent = JSON.parse(readFileSync(cssMapFilePath));
 
-    expect(jsMapFileContent.sourceRoot).toBe('../test/example-src');
-    expect(cssMapFileContent.sourceRoot).toBe('../test/example-src');
+    expect(jsMapFileContent.sourceRoot).toBe('../../test/example-src');
+    expect(cssMapFileContent.sourceRoot).toBe('../../test/example-src');
   });
 };
 
@@ -60,7 +60,6 @@ function getFileLinks(distFolder, publicURL) {
   return fileLinks;
 }
 
-// TODO -> make multiple different instances of these to test different project configs
 let relativeFileLinks = files => {
   const { jsFile, cssFile, jsMapFile, cssMapFile, jpgFile, svgFile } = files;
 
@@ -73,9 +72,12 @@ let relativeFileLinks = files => {
     ],
     cssFileLinks: [
       `url('../images/${svgFile}')`,
-      `sourceMappingURL=../${cssMapFile}`
+      `sourceMappingURL=../maps/${cssMapFile}`
     ],
-    jsFileLinks: [`"../images/${svgFile}"`, `sourceMappingURL=../${jsMapFile}`]
+    jsFileLinks: [
+      `"../images/${svgFile}"`,
+      `sourceMappingURL=../maps/${jsMapFile}`
+    ]
   };
 };
 
@@ -91,8 +93,8 @@ let absoluteFileLinks = files => {
     ],
     cssFileLinks: [
       `url('/images/${svgFile}')`,
-      `sourceMappingURL=/${cssMapFile}`
+      `sourceMappingURL=/maps/${cssMapFile}`
     ],
-    jsFileLinks: [`"/images/${svgFile}"`, `sourceMappingURL=/${jsMapFile}`]
+    jsFileLinks: [`"/images/${svgFile}"`, `sourceMappingURL=/maps/${jsMapFile}`]
   };
 };
