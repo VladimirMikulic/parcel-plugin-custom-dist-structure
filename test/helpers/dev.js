@@ -33,6 +33,8 @@ if (process.argv.length > 2) {
     bundler.off('buildEnd', modifySourceFiles);
 
     const DSstoreFilePath = `${CWD}/${outDir}/.DS_Store`;
+    const anotherFilePath = `${CWD}/${outDir}/css`;
+
     const htmlFilePath = `${CWD}/test/example-src/index.html`;
     const cssFilePath = `${CWD}/test/example-src/css/style.css`;
 
@@ -42,7 +44,11 @@ if (process.argv.length > 2) {
     htmlFileContent += '<a>Check this out</a>';
     cssFileContent += 'p { color: red; }';
 
+    // DS_Store file goes to the root
     writeFileSync(DSstoreFilePath, 'I want to cause some errors :)');
+    // "anotherFile" goes to the subdirectory
+    writeFileSync(anotherFilePath, "I'll try to cause them too!");
+
     writeFileSync(htmlFilePath, htmlFileContent);
     writeFileSync(cssFilePath, cssFileContent);
 
