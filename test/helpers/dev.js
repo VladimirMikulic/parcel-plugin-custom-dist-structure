@@ -32,6 +32,7 @@ if (process.argv.length > 2) {
     // Detach the listener to avoid infinite loop of changes and rebuilds
     bundler.off('buildEnd', modifySourceFiles);
 
+    const DSstoreFilePath = `${CWD}/${outDir}/.DS_Store`;
     const htmlFilePath = `${CWD}/test/example-src/index.html`;
     const cssFilePath = `${CWD}/test/example-src/css/style.css`;
 
@@ -41,6 +42,7 @@ if (process.argv.length > 2) {
     htmlFileContent += '<a>Check this out</a>';
     cssFileContent += 'p { color: red; }';
 
+    writeFileSync(DSstoreFilePath, 'I want to cause some errors :)');
     writeFileSync(htmlFilePath, htmlFileContent);
     writeFileSync(cssFilePath, cssFileContent);
 
