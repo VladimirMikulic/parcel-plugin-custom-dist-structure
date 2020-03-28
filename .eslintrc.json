@@ -19,7 +19,8 @@
     "prefer-const": "warn",
     "arrow-parens": "off",
     "prefer-destructuring": "off",
-    "no-param-reassign": "warn"
+    "no-param-reassign": "warn",
+    "no-restricted-syntax": "off"
   },
   "ignorePatterns": ["dist*", "test"]
 }
