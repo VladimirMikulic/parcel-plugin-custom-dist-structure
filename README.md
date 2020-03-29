@@ -1,7 +1,8 @@
 # parcel-plugin-custom-dist-structure
 
 ![Version](https://img.shields.io/badge/dynamic/json?color=blue&label=version&query=version&url=https%3A%2F%2Fraw.githubusercontent.com%2FVladimirMikulic%2Fparcel-plugin-custom-dist-structure%2Fmaster%2Fpackage.json)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
+![Downloads](https://img.shields.io/npm/dm/parcel-plugin-custom-dist-structure)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](#)
 [![Twitter: VladoDev](https://img.shields.io/twitter/follow/VladoDev.svg?style=social)](https://twitter.com/VladoDev)
 
 > 🚀 Parcel plugin that allows you to specify a custom dist structure.
