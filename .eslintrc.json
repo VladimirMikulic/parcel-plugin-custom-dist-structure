@@ -21,7 +21,8 @@
     "prefer-destructuring": "off",
     "no-param-reassign": "warn",
     "no-restricted-syntax": "off",
-    "arrow-body-style": "warn"
+    "arrow-body-style": "warn",
+    "import/no-extraneous-dependencies": "warn"
   },
   "ignorePatterns": ["dist*", "test"]
 }
