@@ -4,8 +4,8 @@ describe('Utils.js', () => {
   it('tests getFileNameFromPath()', () => {
     const { getFileNameFromPath } = Utils;
 
-    expect(getFileNameFromPath('/src/index.html', '/')).toBe('index.html');
-    expect(getFileNameFromPath('C:\\src\\index.html', '\\')).toBe('index.html');
+    expect(getFileNameFromPath('/src/index.html')).toBe('index.html');
+    expect(getFileNameFromPath('C:\\src\\index.html')).toBe('index.html');
   });
 
   it('tests isProjectJSCodeFile()', () => {
