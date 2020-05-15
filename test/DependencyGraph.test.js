@@ -1,12 +1,15 @@
 const path = require('path');
+const glob = require('glob');
+
 const Bundler = require('parcel-bundler');
 const OutputCustomizer = require('../lib/index');
-const glob = require('glob');
 const DependencyGraph = require('../lib/DependencyGraph');
 
-let bundle;
-let depGraph;
+let bundle, depGraph;
 const CWD = process.cwd();
+
+// Bundling without cached changes (.cache folder) takes time
+jest.setTimeout(20000);
 
 describe('DependencyGraph', () => {
   beforeAll(async done => {

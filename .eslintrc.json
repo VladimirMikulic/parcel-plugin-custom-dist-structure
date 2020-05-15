@@ -22,7 +22,8 @@
     "no-param-reassign": "warn",
     "no-restricted-syntax": "off",
     "arrow-body-style": "warn",
-    "import/no-extraneous-dependencies": "warn"
+    "import/no-extraneous-dependencies": "warn",
+    "no-continue": "off"
   },
   "ignorePatterns": ["dist*", "test"]
 }

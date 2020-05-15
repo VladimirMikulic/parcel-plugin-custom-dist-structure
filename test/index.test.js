@@ -1,51 +1,66 @@
+const fs = require('fs');
 const path = require('path');
 const indexTests = require('./index-tests');
 const { execSync } = require('child_process');
 
 const CWD = process.cwd();
-let devTestFilePath = path.join(CWD, 'test', 'helpers', 'dev.js');
-let prodTestFilePath = path.join(CWD, 'test', 'helpers', 'prod.js');
+const testsBaseDir = 'dist-test';
 
-// Configs for test dist directories
-const devConfig1 = { outDir: 'dist-test-dev1', publicURL: './' };
-const devConfig2 = { outDir: 'dist-test-dev2', publicURL: '/' };
+const devTestFilePath = path.join(CWD, 'test', 'helpers', 'dev.js');
+const prodTestFilePath = path.join(CWD, 'test', 'helpers', 'prod.js');
 
-const prodConfig1 = { outDir: 'dist-test-prod1', publicURL: './' };
-const prodConfig2 = { outDir: 'dist-test-prod2', publicURL: '/' };
+const bundleConfigs = [
+  {
+    outDir: `${testsBaseDir}/dev1`,
+    publicURL: './',
+    genBundleFile: devTestFilePath
+  },
+  {
+    outDir: `${testsBaseDir}/dev2`,
+    publicURL: '/',
+    genBundleFile: devTestFilePath
+  },
+  {
+    outDir: `${testsBaseDir}/dev3`,
+    publicURL: '/static/',
+    genBundleFile: devTestFilePath
+  },
+  {
+    outDir: `${testsBaseDir}/prod1`,
+    publicURL: './',
+    genBundleFile: prodTestFilePath
+  },
+  {
+    outDir: `${testsBaseDir}/prod2`,
+    publicURL: '/',
+    genBundleFile: prodTestFilePath
+  },
+  {
+    outDir: `${testsBaseDir}/prod3`,
+    publicURL: '/static/',
+    genBundleFile: prodTestFilePath
+  }
+];
 
-// Create test dist directories
-execSync(
-  `node ${prodTestFilePath} --public-url=${prodConfig1.publicURL} --out-dir=${prodConfig1.outDir}`
-);
+// Bundling without cached changes (.cache folder) takes time
+jest.setTimeout(30000);
 
-execSync(
-  `node ${prodTestFilePath} --public-url=${prodConfig2.publicURL} --out-dir=${prodConfig2.outDir}`
-);
+// Creates base folder for test folders
+if (!fs.existsSync(testsBaseDir)) fs.mkdirSync(testsBaseDir);
 
-execSync(
-  `node ${devTestFilePath} --public-url=${devConfig1.publicURL} --out-dir=${devConfig1.outDir}`
-);
-execSync(
-  `node ${devTestFilePath} --public-url=${devConfig2.publicURL} --out-dir=${devConfig2.outDir}`
-);
+// Generates test folders
+for (const { outDir, publicURL, genBundleFile } of bundleConfigs) {
+  execSync(
+    `node ${genBundleFile} --public-url=${publicURL} --out-dir=${outDir}`
+  );
+}
 
-// Test it!
-describe(
-  'Test file links in production mode with ./ as a publicURL',
-  indexTests(prodConfig1)
-);
+// Tests file links in files from each folder
+for (const conf of bundleConfigs) {
+  const mode = conf.outDir.includes('prod') ? 'production' : 'development';
 
-describe(
-  'Test file links in production mode with / as a publicURL',
-  indexTests(prodConfig2)
-);
-
-describe(
-  'Test file links in development mode with ./ as a publicURL',
-  indexTests(devConfig1)
-);
-
-describe(
-  'Test file links in development mode with / as a publicURL',
-  indexTests(devConfig2)
-);
+  describe(
+    `Test file links in ${mode} mode with ${conf.publicURL} as a publicURL`,
+    indexTests(conf)
+  );
+}

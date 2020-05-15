@@ -40,8 +40,10 @@ module.exports = ({ outDir, publicURL }) => () => {
     const cssMapFilePath = path.join(distFolder, 'maps', cssMapFile);
     const cssMapFileContent = JSON.parse(readFileSync(cssMapFilePath));
 
-    expect(jsMapFileContent.sourceRoot).toBe('../../test/example-src');
-    expect(cssMapFileContent.sourceRoot).toBe('../../test/example-src');
+    const relativePathToSrcDir = '../../../test/example-src';
+
+    expect(jsMapFileContent.sourceRoot).toBe(relativePathToSrcDir);
+    expect(cssMapFileContent.sourceRoot).toBe(relativePathToSrcDir);
   });
 };
 
@@ -49,12 +51,12 @@ function getFileLinks(distFolder, publicURL) {
   const files = getFilesFromDist(distFolder);
   let fileLinks;
 
+  // Relative public URL
   if (publicURL === './') {
     fileLinks = relativeFileLinks(files);
-  } else if (publicURL === '/') {
-    fileLinks = absoluteFileLinks(files);
   } else {
-    fileLinks = [];
+    // Absolute public URL (either / or custom one like /static/ -> Django)
+    fileLinks = absoluteFileLinks(files, publicURL);
   }
 
   return fileLinks;
@@ -81,20 +83,23 @@ let relativeFileLinks = files => {
   };
 };
 
-let absoluteFileLinks = files => {
+let absoluteFileLinks = (files, publicURL) => {
   const { jsFile, cssFile, jsMapFile, cssMapFile, jpgFile, svgFile } = files;
 
   return {
     entryFileLinks: [
-      `src="/js/${jsFile}"`,
-      `href="/css/${cssFile}"`,
-      `src="/images/${svgFile}"`,
-      `src="/images/${jpgFile}"`
+      `src="${publicURL}js/${jsFile}"`,
+      `href="${publicURL}css/${cssFile}"`,
+      `src="${publicURL}images/${svgFile}"`,
+      `src="${publicURL}images/${jpgFile}"`
     ],
     cssFileLinks: [
-      `url('/images/${svgFile}')`,
-      `sourceMappingURL=/maps/${cssMapFile}`
+      `url('${publicURL}images/${svgFile}')`,
+      `sourceMappingURL=${publicURL}maps/${cssMapFile}`
     ],
-    jsFileLinks: [`"/images/${svgFile}"`, `sourceMappingURL=/maps/${jsMapFile}`]
+    jsFileLinks: [
+      `"${publicURL}images/${svgFile}"`,
+      `sourceMappingURL=${publicURL}maps/${jsMapFile}`
+    ]
   };
 };
