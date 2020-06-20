@@ -45,6 +45,8 @@ Example configuration object in `package.json`:
 }
 ```
 
+> ⚠️ NOTE: In order for this plugin to work, Parcel needs to be installed as a project dependency (globally installed `parcel` won't work)
+
 ## :sparkles: Run tests
 
 The plugin uses [Jest](https://jestjs.io/) for running tests.
