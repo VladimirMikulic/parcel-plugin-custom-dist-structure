@@ -27,18 +27,6 @@ describe('DependencyGraph', () => {
     done();
   });
 
-  it('tests that all files are present in dependency graph', () => {
-    const entryAssetName = depGraph.bundle.name;
-    const expectedEntryAssetName = path.join(CWD, 'dist', 'index.html');
-
-    expect(entryAssetName).toBe(expectedEntryAssetName);
-
-    const nodes = Object.keys(depGraph.nodes);
-    const entryAssetDependecies = depGraph.dependenciesOf(entryAssetName);
-
-    expect(nodes.length).toBe(entryAssetDependecies.length + 1);
-  });
-
   it('tests that all dependecies are connected to their dependants accordingly', () => {
     const outDir = path.join(CWD, 'dist');
     const depGraphFiles = depGraph.outgoingEdges;
