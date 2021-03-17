@@ -2,3 +2,5 @@ dist*
 .cache
 coverage
 node_modules
+.history
+.vscode
