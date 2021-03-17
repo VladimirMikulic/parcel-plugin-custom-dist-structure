@@ -40,7 +40,7 @@ module.exports = ({ outDir, publicURL }) => () => {
     const cssMapFilePath = path.join(distFolder, 'maps', cssMapFile);
     const cssMapFileContent = JSON.parse(readFileSync(cssMapFilePath));
 
-    const relativePathToSrcDir = '../../../test/example-src';
+    const relativePathToSrcDir = path.normalize('../../test/example-src');
 
     expect(jsMapFileContent.sourceRoot).toBe(relativePathToSrcDir);
     expect(cssMapFileContent.sourceRoot).toBe(relativePathToSrcDir);

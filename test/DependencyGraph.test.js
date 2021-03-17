@@ -27,12 +27,12 @@ describe('DependencyGraph', () => {
     done();
   });
 
-  it('tests that all dependecies are connected to their dependants accordingly', () => {
+  it('tests that all dependencies are connected to their dependants accordingly', () => {
     const outDir = path.join(CWD, 'dist');
     const depGraphFiles = depGraph.outgoingEdges;
 
-    const jsFile = glob.sync(`${outDir}/js/*.js`)[0].replace('js/', '');
-    const cssFile = glob.sync(`${outDir}/css/*.css`)[0].replace('css/', '');
+    const jsFile = path.normalize(glob.sync(`${outDir}/js/*.js`)[0].replace('js/', ''));
+    const cssFile = path.normalize(glob.sync(`${outDir}/css/*.css`)[0].replace('css/', ''));
     const entryFile = path.join(outDir, 'index.html');
 
     expect(depGraphFiles[jsFile].length).toBe(2);
