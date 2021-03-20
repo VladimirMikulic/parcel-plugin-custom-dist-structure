@@ -3,7 +3,7 @@ const path = require('path');
 
 exports.getFilesFromFolder = (folderPath, fileType = '') => {
   return fs
-    .readdirSync(path.normalize(folderPath), { withFileTypes: true })
+    .readdirSync(folderPath, { withFileTypes: true })
     .filter(item => !item.isDirectory())
     .filter(item => item.name.endsWith(fileType))
     .map(item => item.name);
