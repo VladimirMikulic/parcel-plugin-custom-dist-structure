@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 exports.getFilesFromFolder = (folderPath, fileType = '') => {
   return fs

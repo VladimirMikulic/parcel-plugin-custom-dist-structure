@@ -27,7 +27,7 @@ describe('DependencyGraph', () => {
     done();
   });
 
-  it('tests that all dependecies are connected to their dependants accordingly', () => {
+  it('tests that all dependencies are connected to their dependants accordingly', () => {
     const outDir = path.join(CWD, 'dist');
     const depGraphFiles = depGraph.outgoingEdges;
 
