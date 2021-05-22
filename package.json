@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-custom-dist-structure",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "Parcel plugin that allows you to specify a custom dist structure.",
   "main": "lib/index.js",
   "scripts": {
@@ -25,6 +25,10 @@
     "options": {
       "development": true
     }
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://ko-fi.com/vladimirmikulic"
   },
   "files": [
     "lib/*"
