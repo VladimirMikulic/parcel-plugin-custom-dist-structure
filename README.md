@@ -7,6 +7,8 @@
 
 > 🚀 Parcel plugin that allows you to specify a custom dist structure.
 
+*This is the plugin for Parcel v1. [@gatsbyjs/parcel-namer-relative-to-cwd](https://www.npmjs.com/package/@gatsbyjs/parcel-namer-relative-to-cwd) can be used for Parcel v2.*
+
 ## :package: Installation
 
 ```shell
